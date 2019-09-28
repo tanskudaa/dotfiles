@@ -1,0 +1,12 @@
+set encoding=utf-8
+set fileencoding=utf-8
+set number
+set relativenumber
+syntax on
+set smartindent
+set cpoptions=aABceFsI
+set shiftwidth=4
+set tabstop=8
+set softtabstop=4
+set expandtab
+set textwidth=79

@@ -1,0 +1,11 @@
+{
+    "editor.fontFamily": "Inconsolata, Monaco, 'Courier New', monospace",
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrap": "on",
+    "editor.lineNumbers": "relative",
+    "editor.fontSize": 14,
+    "editor.tokenColorCustomizations": {
+        
+    },
+    "workbench.colorTheme": "Visual Studio Dark"
+}

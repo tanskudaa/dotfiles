@@ -63,15 +63,22 @@ bindsym $mod+Shift+g exec firefox --private
 bindsym $mod+n exec nemo
 
 #------------------Special window instances
+# Use xprop to fetch window classes etc.
+
 # st instances set to floating
 for_window [class="st-256color" instance="floating"] floating enable, resize set 640 400, move position center, move down 280 px, move right 520 px
-# All Steam windows
+
+# All Steam pop-up windows but NOT the main Steam window
 for_window [class="Steam"] floating enable
-# Nvidia-settings
+for_window [title="Steam"] floating disable
+
+# nvidia-settings
 for_window [class="Nvidia-settings"] floating enable, resize set height 640, move position center
+
 # Nemo
-for_window [class="Nemo"] floating enable, resize set 1200 800
-# Pavucontrol
+#for_window [class="Nemo"] floating enable, resize set 1200 800
+
+# pavucontrol
 for_window [class="Pavucontrol"] floating enable
 
 #------------------Visual
@@ -103,7 +110,8 @@ bar {
         # Disable system tray
         tray_output none
 
-        #NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely! 5 won't have all icons required.
+        # NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely!
+        # 5 will NOT have all icons required.
 	font pango:Noto Sans Display, FontAwesome 9
         status_command bumblebee-status \
             -m spotify amixer memory network_traffic datetime \
@@ -118,7 +126,6 @@ default_floating_border pixel 3
 hide_edge_borders both
 
 # Controlling gaps
-
 # Keep adding horizontal gaps with backspace
 bindsym $mod+BackSpace exec i3-msg gaps inner current plus 5, \
     exec i3-msg gaps horizontal current plus 50, \
@@ -129,10 +136,6 @@ bindsym $mod+Shift+BackSpace exec i3-msg gaps outer current set 0, \
 
 # also i am mad so this is important
 bindsym $mod+Ctrl+BackSpace open
-
-# Old obsolete configs for history's sake
-#bindsym $mod+BackSpace exec i3-msg gaps horizontal current plus 200, \
-#    exec i3-msg gaps inner current plus 5
 
 #------------------Defining workspaces
 # Define names for default workspaces for which we configure key bindings later on.
@@ -241,4 +244,4 @@ mode "resize" {
 }
 # Bind resize-mode to key
 bindsym $mod+r mode "resize"
-bindsym $mod+t resize set 1920 1080
+bindsym $mod+t resize set width 1920

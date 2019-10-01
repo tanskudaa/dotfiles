@@ -8,5 +8,7 @@
     "editor.tokenColorCustomizations": {
         
     },
-    "workbench.colorTheme": "Visual Studio Dark"
+    "workbench.colorTheme": "Visual Studio Dark",
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false
 }

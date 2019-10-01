@@ -5,10 +5,10 @@
     "editor.wordWrap": "on",
     "editor.lineNumbers": "relative",
     "editor.fontSize": 14,
-    "editor.tokenColorCustomizations": {
-        
+    "workbench.colorCustomizations":{
+        "editor.background": "#0c1115",
+        "editor.foreground": "#98d1ce",
     },
-    "workbench.colorTheme": "Visual Studio Dark",
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false
 }

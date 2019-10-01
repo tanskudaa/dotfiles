@@ -1,5 +1,5 @@
 ! 1440p scaling
-Xft.dpi: 100
+Xft.dpi:        100
 
 ! special
 *.foreground:   #98d1ce
@@ -37,3 +37,4 @@ Xft.dpi: 100
 ! white
 *.color7:       #98d1ce
 *.color15:      #d3ebe9
+

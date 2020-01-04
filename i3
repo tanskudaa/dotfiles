@@ -20,7 +20,8 @@ exec xset s off dpms 0 0 0
 # #008080 / Windows 98 wallpaper cyan
 # #F56966 / A good pink
 # #CD4867 / A different good pink
-exec_always feh --bg-center --image-bg "#CD4867" --no-fehbg $HOME/.wallpaper
+# #020208 / Really dark blue
+exec_always feh --bg-center --image-bg "#020208" --no-fehbg $HOME/.wallpaper
 # Set sensible fucking mouse acceleration
 exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
 # Set finnish keyboard layout
@@ -52,7 +53,8 @@ bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
 # NOTE: script changed to point to /opt/bin/dmenu for center mod. Vanilla dmenu is installed via pacman for surf to properly position dmenu as a URL-bar. Their config.h is symlinked for consistent looks.
-bindsym $mod+d exec dmenu_run_history
+#bindsym $mod+d exec dmenu_run_history
+bindsym $mod+d exec dmenu_run
 
 # Web browser
 #bindsym $mod+g exec surf google.com

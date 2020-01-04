@@ -5,13 +5,16 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# ???
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+# Use Vi-mode
+set editing-mode vi
 
 # Use Vim as editor everywhere
 export EDITOR="vim"
 export VISUAL=$EDITOR
+
+# ???
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

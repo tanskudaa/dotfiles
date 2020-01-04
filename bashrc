@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Use Vi-mode
-set editing-mode vi
-
 # Use Vim as editor everywhere
 export EDITOR="vim"
 export VISUAL=$EDITOR

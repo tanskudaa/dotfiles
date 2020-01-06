@@ -9,6 +9,9 @@
 export EDITOR="vim"
 export VISUAL=$EDITOR
 
+# add ~/bin to PATH
+export PATH=$PATH:/home/tansku/bin
+
 # ???
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '

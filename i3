@@ -53,8 +53,8 @@ bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
 # NOTE: script changed to point to /opt/bin/dmenu for center mod. Vanilla dmenu is installed via pacman for surf to properly position dmenu as a URL-bar. Their config.h is symlinked for consistent looks.
-#bindsym $mod+d exec dmenu_run_history
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run_history
 
 # Web browser
 #bindsym $mod+g exec surf google.com
@@ -68,7 +68,7 @@ bindsym $mod+n exec nemo
 # Use xprop to fetch window classes etc.
 
 # st instances set to floating
-for_window [class="st-256color" instance="floating"] floating enable, resize set 640 400, move position center, move down 280 px, move right 520 px
+for_window [class="St" instance="floating"] floating enable, resize set 640 400, move position center, move down 480 px
 
 # All Steam pop-up windows but NOT the main Steam window
 for_window [class="Steam"] floating enable

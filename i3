@@ -13,8 +13,19 @@ bindsym $mod+Shift+r restart
 #------------------Execute on startup
 # Merge .Xresources
 exec_always xrdb -merge ~/.Xresources
+
 # Disable screen timeout
 exec xset s off dpms 0 0 0
+
+# Set finnish keyboard layout
+exec setxkbmap fi
+
+# Set sensible fucking mouse acceleration
+exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
+
+# Compton
+#exec_always picom
+
 # Set wallpaper from symlinked file
 # Good background colors:
 # #008080 / Windows 98 wallpaper cyan
@@ -22,10 +33,6 @@ exec xset s off dpms 0 0 0
 # #CD4867 / A different good pink
 # #020208 / Really dark blue
 exec_always feh --bg-center --image-bg "#020208" --no-fehbg $HOME/.wallpaper
-# Set sensible fucking mouse acceleration
-exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
-# Set finnish keyboard layout
-exec setxkbmap fi
 
 #------------------Application shortcuts
 # Switch keymaps between fi and us (general use and programming, essentially)
@@ -68,7 +75,7 @@ bindsym $mod+n exec nemo
 # Use xprop to fetch window classes etc.
 
 # st instances set to floating
-for_window [class="St" instance="floating"] floating enable, resize set 640 400, move position center, move down 480 px
+for_window [class="St" instance="floating"] floating enable, resize set 800 480, move position center, move down 460 px
 
 # All Steam pop-up windows but NOT the main Steam window
 for_window [class="Steam"] floating enable
@@ -78,10 +85,13 @@ for_window [title="Steam"] floating disable
 for_window [class="Nvidia-settings"] floating enable, resize set height 640, move position center
 
 # Nemo
-#for_window [class="Nemo"] floating enable, resize set 1200 800
+for_window [class="Nemo"] floating enable, resize set 1200 800
 
 # pavucontrol
 for_window [class="Pavucontrol"] floating enable
+
+# Lutris
+for_window [class="Lutris"] floating enable
 
 #------------------Visual
 # Font for window titles. Will also be used by the bar unless a different font
@@ -93,12 +103,15 @@ for_window [class="Pavucontrol"] floating enable
 font pango:Noto Sans Display 8
 
 # Set colors from Xresources
-#set_from_resource $fg i3wm.color7
-#set_from_resource $bg i3wm.color2
+set_from_resource $fg i3wm.color15
+set_from_resource $fg2 i3wm.color14
+set_from_resource $bg i3wm.color6
+set_from_resource $bg2 i3wm.color10
+
 # class                 border  backgr. text indicator child_border
-#client.focused          $fg     $bg     $fg  $bg       $fg
-#client.focused_inactive $bg     $bg     $fg  $bg       $bg
-#client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused          $fg     $bg     $fg  $bg       $fg
+client.unfocused        $fg2    $bg2    $fg2 $bg2      $bg2
+client.focused_inactive $fg2    $bg     $fg  $bg2      $bg2
 #client.urgent           $bg     $bg     $fg  $bg       $bg
 #client.placeholder      $bg     $bg     $fg  $bg       $bg
 #
@@ -107,10 +120,16 @@ font pango:Noto Sans Display 8
 # i3bar and status command
 bar {
         # Only show when pressing modkey
-	mode hide
 	modifier $mod 
+	mode hide
+
         # Disable system tray
         tray_output none
+
+        colors {
+            focused_workspace $fg $bg $fg
+            inactive_workspace $fg2 $bg2 $fg2
+        }
 
         # NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely!
         # 5 will NOT have all icons required.
@@ -137,7 +156,8 @@ bindsym $mod+Shift+BackSpace exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current set 0
 
 # also i am mad so this is important
-bindsym $mod+Ctrl+BackSpace open
+# but doesn't work at the moment (Manjaro autologin??)
+#bindsym $mod+Ctrl+BackSpace open
 
 #------------------Defining workspaces
 # Define names for default workspaces for which we configure key bindings later on.
@@ -228,16 +248,16 @@ bindsym $mod+Shift+Right move right 75 px
 # Resizing windows (you can also use mouse)
 mode "resize" {
         # Shrinking windows with vim-style keys
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 30 px or 10 ppt
+        bindsym j resize grow height 30 px or 10 ppt
+        bindsym k resize shrink height 30 px or 10 ppt
+        bindsym l resize grow width 30 px or 10 ppt
 
         # Same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 30 px or 10 ppt
+        bindsym Down resize grow height 30 px or 10 ppt
+        bindsym Up resize shrink height 30 px or 10 ppt
+        bindsym Right resize grow width 30 px or 10 ppt
 
         # Back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"

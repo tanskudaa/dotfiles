@@ -11,7 +11,6 @@ export VISUAL=$EDITOR
 
 # Add ~/bin to PATH
 export PATH=$PATH:/home/tansku/bin
-export CLASSPATH=/home/tansku/compiled/freecol/jars
 
 # Aliases
 alias ls='ls --color=auto'

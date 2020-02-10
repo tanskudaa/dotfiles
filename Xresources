@@ -1,7 +1,11 @@
+!
+! Visual
+!
+
 ! 1440p scaling
 Xft.dpi:        100
 
-! Visual
+! (Terminal) font and opacity
 !*.font: Liberation Mono:pixelsize=12:antialias=true:autohint=true;
 *.alpha: 0.99
 

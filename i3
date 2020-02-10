@@ -23,6 +23,9 @@ exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
 # Compositing
 exec_always pkill xcompmgr; xcompmgr
 
+# Blueman
+exec blueman-applet
+
 # Set finnish keyboard layout
 exec setxkbmap fi
 
@@ -80,6 +83,9 @@ bindsym $mod+n exec nemo
 
 #------------------Special window instances
 # Use xprop to fetch window classes etc.
+
+# blueman-manager
+for_window [class="Blueman-manager"] floating enable
 
 # st instances set to floating
 for_window [class="St" instance="floating"] floating enable, resize set 800 480, move position center, move down 460 px
@@ -155,9 +161,9 @@ hide_edge_borders both
 
 # Controlling gaps
 # Keep adding horizontal gaps with backspace
-bindsym $mod+BackSpace exec i3-msg gaps inner current plus 5, \
-    exec i3-msg gaps horizontal current plus 50, \
-    exec i3-msg gaps vertical current set 10
+bindsym $mod+BackSpace exec i3-msg gaps inner current set 10, \
+    exec i3-msg gaps horizontal current plus 25.6, \
+    exec i3-msg gaps vertical current plus 14.4
 # Undo all gaps with shift+backspace
 bindsym $mod+Shift+BackSpace exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current set 0

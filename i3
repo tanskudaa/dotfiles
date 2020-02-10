@@ -14,8 +14,14 @@ bindsym $mod+Shift+r restart
 # Merge .Xresources
 exec_always xrdb -merge ~/.Xresources
 
-# Disable screen timeout
+# Disable screen timeout (use Alt+Shift+Q for screen sleep manually)
 exec xset s off dpms 0 0 0
+
+# Do Cinnamon magic to make graphical applications fucking work
+exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
+
+# Compositing
+exec_always pkill xcompmgr; xcompmgr
 
 # Set finnish keyboard layout
 exec setxkbmap fi
@@ -59,14 +65,15 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
-# NOTE: script changed to point to /opt/bin/dmenu for center mod. Vanilla dmenu is installed via pacman for surf to properly position dmenu as a URL-bar. Their config.h is symlinked for consistent looks.
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec dmenu_run_history
+bindsym $mod+d exec /home/tansku/bin/dmenu_run_history
 
 # Web browser
 #bindsym $mod+g exec surf google.com
-bindsym $mod+g exec firefox
-bindsym $mod+Shift+g exec firefox --private
+#bindsym $mod+g exec firefox
+#bindsym $mod+Shift+g exec firefox --private
+bindsym $mod+g exec brave
+bindsym $mod+Shift+g exec brave --incognito
 
 # File browser
 bindsym $mod+n exec nemo

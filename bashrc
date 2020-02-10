@@ -9,12 +9,15 @@
 export EDITOR="vim"
 export VISUAL=$EDITOR
 
-# add ~/bin to PATH
+# Add ~/bin to PATH
 export PATH=$PATH:/home/tansku/bin
 export CLASSPATH=/home/tansku/compiled/freecol/jars
 
-# ???
+# Aliases
 alias ls='ls --color=auto'
+alias feh='feh --scale-down --auto-zoom'
+
+# ???
 PS1='[\u@\h \W]\$ '
 
 # Import colorscheme from 'wal' asynchronously

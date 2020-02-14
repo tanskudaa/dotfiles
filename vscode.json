@@ -12,7 +12,6 @@
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
     "workbench.statusBar.visible": true,
-    "window.menuBarVisibility": "default",
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
@@ -21,5 +20,8 @@
     },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "java.errors.incompleteClasspath.severity": "ignore"
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "window.titleBarStyle": "custom"
 }

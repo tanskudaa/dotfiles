@@ -20,6 +20,9 @@ exec xset s off dpms 0 0 0
 # Do Cinnamon magic to make graphical applications fucking work
 exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
 
+# Workaround script for Force Composition Pipeline
+exec startup_nvidia
+
 # Compositing
 exec_always pkill xcompmgr; xcompmgr
 
@@ -44,6 +47,9 @@ exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
 exec_always feh --bg-center --image-bg "#020208" --no-fehbg $HOME/.wallpaper
 
 #------------------Application shortcuts
+# Power options (shutdown, reboot, log out)
+bindsym $mod+Escape exec dmenu_poweropt
+
 # Switch keymaps between fi and us (general use and programming, essentially)
 bindsym $mod+u exec setxkbmap fi
 bindsym $mod+Shift+u exec setxkbmap us
@@ -164,8 +170,11 @@ hide_edge_borders both
 bindsym $mod+BackSpace exec i3-msg gaps inner current set 10, \
     exec i3-msg gaps horizontal current plus 25.6, \
     exec i3-msg gaps vertical current plus 14.4
-# Undo all gaps with shift+backspace
-bindsym $mod+Shift+BackSpace exec i3-msg gaps outer current set 0, \
+
+bindsym $mod+Shift+BackSpace exec i3-msg gaps horizontal current plus 51.2
+
+# Undo all gaps with ctrl+backspace
+bindsym $mod+Ctrl+BackSpace exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current set 0
 
 # also i am mad so this is important
@@ -173,7 +182,7 @@ bindsym $mod+Shift+BackSpace exec i3-msg gaps outer current set 0, \
 #bindsym $mod+Ctrl+BackSpace open
 
 #------------------Defining workspaces
-# Define names for default workspaces for which we configure key bindings later on.
+# Define names for default workspaces for which we configure keybindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"

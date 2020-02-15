@@ -6,8 +6,8 @@
     "editor.lineNumbers": "relative",
     "editor.fontSize": 16,
     "workbench.colorCustomizations":{
-        "editor.background": "#0c1115",
-        "editor.foreground": "#98d1ce",
+        "editor.background": "#010709",
+        "editor.foreground": "#e8dfd6",
     },
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,

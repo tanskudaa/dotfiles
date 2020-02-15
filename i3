@@ -44,7 +44,10 @@ exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
 # #F56966 / A good pink
 # #CD4867 / A different good pink
 # #020208 / Really dark blue
-exec_always feh --bg-center --image-bg "#020208" --no-fehbg $HOME/.wallpaper
+exec_always feh --bg-center --no-fehbg $HOME/.wallpaper
+
+# Colors by wal
+exec wal -n -R
 
 #------------------Application shortcuts
 # Power options (shutdown, reboot, log out)

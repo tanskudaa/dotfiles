@@ -1,5 +1,9 @@
 " Vim configuration
 "------------------------------------------------------------
+" Theme
+set background=dark
+colorscheme dim
+
 " Set enconding to UTF-8 by default.
 set encoding=utf-8
 set fileencoding=utf-8

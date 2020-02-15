@@ -9,32 +9,40 @@ Xft.dpi:        100
 !*.font: Liberation Mono:pixelsize=12:antialias=true:autohint=true;
 *.alpha: 0.99
 
-! Colors:
-! special
-*.foreground:   #98d1ce
-*.background:   #030507
-*.cursorColor:  #98d1ce
-! black
-*.color0:       #091724
-*.color8:       #273b53
-! red
-*.color1:       #c33027
-*.color9:       #d26939
-! green
-*.color2:       #26a98b
-*.color10:      #144d6f
-! yellow
-*.color3:       #edb54b
-*.color11:      #245361
-! blue
-*.color4:       #195465
-*.color12:      #1997c5
-! magenta
-*.color5:       #4e5165
-*.color13:      #888ba5
-! cyan
-*.color6:       #33859d
-*.color14:      #599caa
-! white
-*.color7:       #98d1ce
-*.color15:      #d3ebe9
+! Using wal for colors for now
+!! special
+!*.foreground:   #919191
+!*.background:   #000000
+!*.cursorColor:  #919191
+!
+!! black
+!*.color0:       #5e5e5e
+!*.color8:       #303030
+!
+!! red
+!*.color1:       #ffa59a
+!*.color9:       #a13a38
+!
+!! green
+!*.color2:       #24dfc4
+!*.color10:      #00715d
+!
+!! yellow
+!*.color3:       #73db95
+!*.color11:      #006f32
+!
+!! blue
+!*.color4:       #ff9fc9
+!*.color12:      #a43261
+!
+!! magenta
+!*.color5:       #ffa7f6
+!*.color13:      #913e88
+!
+!! cyan
+!*.color6:       #00ddf4
+!*.color14:      #007086
+!
+!! white
+!*.color7:       #ffffff
+!*.color15:      #c6c6c6

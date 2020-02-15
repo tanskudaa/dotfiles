@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/mnt/2tb/nasroot/image/wallpaper/pnt_splsh4.jpeg"
+let background = "#000000"
+let foreground = "#cfd9d7"
+let cursor     = "#cfd9d7"
+
+" Colors
+let color0  = "#000000"
+let color1  = "#C75911"
+let color2  = "#108773"
+let color3  = "#E1A229"
+let color4  = "#52708B"
+let color5  = "#069C95"
+let color6  = "#47BFB9"
+let color7  = "#cfd9d7"
+let color8  = "#909796"
+let color9  = "#C75911"
+let color10 = "#108773"
+let color11 = "#E1A229"
+let color12 = "#52708B"
+let color13 = "#069C95"
+let color14 = "#47BFB9"
+let color15 = "#cfd9d7"

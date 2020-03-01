@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# dmenu prompt for shutting down and other power management options
+# Thanks Luke
+
+choices="Cancel\n\nLog out\nReboot\nShutdown"
+
+chosen=$(echo -e "$choices" | dmenu -i -nb darkred -sb red -sf white -nf gray)
+
+case "$chosen" in
+    "Log out") i3 exit ;;
+    Reboot) reboot ;;
+    Shutdown) shutdown -h now ;;
+esac

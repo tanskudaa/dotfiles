@@ -1,0 +1,2 @@
+#!/bin/sh
+exec brave http://localhost:8888/gui/

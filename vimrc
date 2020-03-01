@@ -1,8 +1,8 @@
 " Vim configuration
 "------------------------------------------------------------
 " Theme
-set background=dark
-colorscheme dim
+colorscheme wal
+set background=light
 
 " Set enconding to UTF-8 by default.
 set encoding=utf-8

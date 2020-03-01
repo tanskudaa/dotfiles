@@ -64,4 +64,5 @@ get_session(){
 }
 
 export PATH="$PATH:$HOME/bin"
+exec wal -n -R
 exec $(get_session)

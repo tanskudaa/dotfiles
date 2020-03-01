@@ -11,6 +11,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 #------------------Execute on startup
+# Colors by wal
+# Also done by .xinitrc to counter errors stemming from xorg.conf.d - both are needed
+exec wal -n -R
+
 # Merge .Xresources
 exec_always xrdb -merge ~/.Xresources
 
@@ -18,12 +22,15 @@ exec_always xrdb -merge ~/.Xresources
 exec xset s off dpms 0 0 0
 
 # Do Cinnamon magic to make graphical applications fucking work
-exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
+# OBS! This breaks i3 now that xorg.conf is read
+#exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
 
 # Workaround script for Force Composition Pipeline
-exec startup_nvidia
+# Not used anymore, xorg.conf works now that i's moved to xorg.conf.d
+#exec startup_nvidia
 
 # Compositing
+#exec_always picom
 exec_always pkill xcompmgr; xcompmgr
 
 # Blueman
@@ -35,9 +42,6 @@ exec setxkbmap fi
 # Set sensible fucking mouse acceleration
 exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
 
-# Compton
-#exec_always picom
-
 # Set wallpaper from symlinked file
 # Good background colors:
 # #008080 / Windows 98 wallpaper cyan
@@ -45,9 +49,6 @@ exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
 # #CD4867 / A different good pink
 # #020208 / Really dark blue
 exec_always feh --bg-center --no-fehbg $HOME/.wallpaper
-
-# Colors by wal
-exec wal -n -R
 
 #------------------Application shortcuts
 # Power options (shutdown, reboot, log out)
@@ -78,7 +79,9 @@ bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec /home/tansku/bin/dmenu_run_history
+#bindsym $mod+d exec /home/tansku/bin/dmenu_run_history
+bindsym $mod+d exec dmenu_run_history -nb "$black" -nf "$fg" -sb "$bg2" -sf "$fg"
+
 
 # Web browser
 #bindsym $mod+g exec surf google.com
@@ -125,10 +128,11 @@ for_window [class="Lutris"] floating enable
 font pango:Noto Sans Display 8
 
 # Set colors from Xresources
-set_from_resource $fg i3wm.color15
-set_from_resource $fg2 i3wm.color14
-set_from_resource $bg i3wm.color6
-set_from_resource $bg2 i3wm.color10
+set_from_resource $fg i3wm.color15 #f0f0f0
+set_from_resource $fg2 i3wm.color14 #f0f0f0
+set_from_resource $bg i3wm.color6 #f0f0f0
+set_from_resource $bg2 i3wm.color10 #f0f0f0
+set_from_resource $black i3wm.color0 #000000
 
 # class                 border  backgr. text indicator child_border
 client.focused          $fg     $bg     $fg  $bg       $fg
@@ -174,11 +178,12 @@ bindsym $mod+BackSpace exec i3-msg gaps inner current set 10, \
     exec i3-msg gaps horizontal current plus 25.6, \
     exec i3-msg gaps vertical current plus 14.4
 
-bindsym $mod+Shift+BackSpace exec i3-msg gaps horizontal current plus 51.2
+bindsym $mod+Shift+BackSpace exec i3-msg gaps horizontal current plus 204.8
 
 # Undo all gaps with ctrl+backspace
 bindsym $mod+Ctrl+BackSpace exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current set 0
+
 
 # also i am mad so this is important
 # but doesn't work at the moment (Manjaro autologin??)
@@ -291,4 +296,4 @@ mode "resize" {
 }
 # Bind resize-mode to key
 bindsym $mod+r mode "resize"
-bindsym $mod+t resize set width 1920
+bindsym $mod+t resize set width 1920 height 1080

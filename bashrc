@@ -21,8 +21,11 @@ alias feh='feh --scale-down --auto-zoom'
 # \e to start color, m to end
 # eg. \e[1;31m for bold (1) red (31) text
 # \e[m to return to foreground color
-PS1='[\e[1;31m\u\e[m@\e[1;36m\h \e[m\W]\$ '
+# Escape sequences (eg. color information) has to be encolsed in \[ \] too to avoid
+# the CLI from spassing out on long lines
+PS1='[\[\e[1;31m\]\u\[\e[m\]@\[\e[1;36m\]\h\[\e[m\] \W]\$ '
 
+# Import colorscheme from 'wal' asynchronously
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.

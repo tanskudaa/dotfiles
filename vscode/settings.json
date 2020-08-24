@@ -1,0 +1,47 @@
+{
+    "editor.rulers": [80,120],
+    "editor.fontFamily": "Inconsolata, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 16,
+    "editor.tabSize": 4,
+    "editor.renderWhitespace": "boundary",
+    "editor.lineNumbers": "relative",
+    "editor.wordWrap": "on",
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.acceptSuggestionOnEnter": "off",
+
+    "window.zoomLevel": 0,
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": true,
+
+    "workbench.colorCustomizations":
+    {
+        "editor.background": "#010709",
+        "editor.foreground": "#e8dfd6",
+    },
+
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "files.exclude":
+    {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+
+    "java.semanticHighlighting.enabled": true,
+    // "java.errors.incompleteClasspath.severity": "ignore",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.minimap.enabled": false,
+    "python.languageServer": "Microsoft",
+}

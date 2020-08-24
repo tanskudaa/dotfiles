@@ -4,7 +4,7 @@
 #
 
 # Set the mod key
-set $mod Mod1
+set $mod Mod4
 
 # Reload the configuration file or restart i3 inplace
 bindsym $mod+Shift+c reload
@@ -13,7 +13,7 @@ bindsym $mod+Shift+r restart
 #------------------Execute on startup
 # Colors by wal
 # Also done by .xinitrc to counter errors stemming from xorg.conf.d - both are needed
-exec wal -n -R
+# exec wal -n -R
 
 # Merge .Xresources
 exec_always xrdb -merge ~/.Xresources
@@ -30,8 +30,8 @@ exec xset s off dpms 0 0 0
 #exec startup_nvidia
 
 # Compositing
-#exec_always picom
-exec_always pkill xcompmgr; xcompmgr
+exec picom
+# exec_always pkill xcompmgr; xcompmgr
 
 # Blueman
 exec blueman-applet
@@ -40,7 +40,7 @@ exec blueman-applet
 exec setxkbmap fi
 
 # Set sensible fucking mouse acceleration
-exec xinput set-prop pointer:'Logitech MX Master' 296 -0.6
+exec xinput set-prop pointer:'Logitech MX Master' 300 -0.6
 
 # Set wallpaper from symlinked file
 # Good background colors:
@@ -72,15 +72,14 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Start a terminal window, in a floating window by adding shift
-# Default:
-#bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec st
-bindsym $mod+Shift+Return exec st -n floating
+bindsym $mod+Shift+Return exec st -n floating -A 0.05
 
 # Start dmenu with history (~/bin/)
-#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec /home/tansku/bin/dmenu_run_history
-bindsym $mod+d exec dmenu_run_history -nb "$black" -nf "$fg" -sb "$bg2" -sf "$fg"
+#bindsym $mod+d exec dmenu_run_history -nb "$black" -nf "$fg" -sb "$bg2" -sf "$fg"
 
 
 # Web browser
@@ -101,6 +100,7 @@ for_window [class="Blueman-manager"] floating enable
 
 # st instances set to floating
 for_window [class="St" instance="floating"] floating enable, resize set 800 480, move position center, move down 460 px
+for_window [class="Gnome-terminal" title="floating"] floating enable, resize set 800 480, move position center, move down 460 px
 
 # All Steam pop-up windows but NOT the main Steam window
 for_window [class="Steam"] floating enable
@@ -128,20 +128,19 @@ for_window [class="Lutris"] floating enable
 font pango:Noto Sans Display 8
 
 # Set colors from Xresources
-set_from_resource $fg i3wm.color15 #f0f0f0
-set_from_resource $fg2 i3wm.color14 #f0f0f0
-set_from_resource $bg i3wm.color6 #f0f0f0
-set_from_resource $bg2 i3wm.color10 #f0f0f0
-set_from_resource $black i3wm.color0 #000000
+set_from_resource   $front_pri      i3wm.foreground #f0f0f0
+set_from_resource   $back_pri       i3wm.color9     #f0f0f0
+set_from_resource   $front_sec      i3wm.foreground #f0f0f0
+set_from_resource   $back_sec       i3wm.color5     #f0f0f0
+set_from_resource   $black          i3wm.color0     #000000
 
-# class                 border  backgr. text indicator child_border
-client.focused          $fg     $bg     $fg  $bg       $fg
-client.unfocused        $fg2    $bg2    $fg2 $bg2      $bg2
-client.focused_inactive $fg2    $bg     $fg  $bg2      $bg2
-#client.urgent           $bg     $bg     $fg  $bg       $bg
-#client.placeholder      $bg     $bg     $fg  $bg       $bg
-#
-#client.background       $bg
+# class                     border      backgr.     text        indicator   child_border
+client.focused              $front_pri  $back_pri   $front_pri  $back_pri  $front_pri
+client.unfocused            $front_sec  $back_sec   $front_sec  $back_sec   $back_sec
+client.focused_inactive     $front_pri  $back_pri   $front_pri  $back_pri   $back_pri
+# client.urgent
+# client.placeholder
+# client.background           $bg
 
 # i3bar and status command
 bar {
@@ -153,8 +152,8 @@ bar {
         tray_output none
 
         colors {
-            focused_workspace $fg $bg $fg
-            inactive_workspace $fg2 $bg2 $fg2
+            focused_workspace   $front_pri  $back_pri   $front_pri
+            inactive_workspace  $front_sec  $back_sec   $front_pri
         }
 
         # NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely!
@@ -167,8 +166,8 @@ bar {
 }
 
 # Border width
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 1
+default_floating_border pixel 1
 # Hide edge borders
 hide_edge_borders both
 
@@ -178,16 +177,16 @@ bindsym $mod+BackSpace exec i3-msg gaps inner current set 10, \
     exec i3-msg gaps horizontal current plus 25.6, \
     exec i3-msg gaps vertical current plus 14.4
 
+# Keep adding vertical gaps with shift+backspace
 bindsym $mod+Shift+BackSpace exec i3-msg gaps horizontal current plus 204.8
 
 # Undo all gaps with ctrl+backspace
 bindsym $mod+Ctrl+BackSpace exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current set 0
 
-
 # also i am mad so this is important
-# but doesn't work at the moment (Manjaro autologin??)
-#bindsym $mod+Ctrl+BackSpace open
+bindsym $mod+Ctrl+Return open
+
 
 #------------------Defining workspaces
 # Define names for default workspaces for which we configure keybindings later on.

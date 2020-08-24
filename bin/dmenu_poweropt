@@ -5,7 +5,7 @@
 
 choices="Cancel\n\nLog out\nReboot\nShutdown"
 
-chosen=$(echo -e "$choices" | dmenu -i -nb darkred -sb red -sf white -nf gray)
+chosen=$(echo -e "$choices" | dmenu -c -i -nb darkred -sb red -sf white -nf gray)
 
 case "$chosen" in
     "Log out") i3 exit ;;

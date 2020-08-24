@@ -1,2 +1,0 @@
-#!/bin/sh
-exec ~/compiled/df_linux/dfhack

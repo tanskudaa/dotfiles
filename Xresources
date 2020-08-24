@@ -5,44 +5,46 @@
 ! 1440p scaling
 Xft.dpi:        100
 
-! (Terminal) font and opacity
+! Terminal font and opacity
+! Currently not used - st is configured to use default mono font and setalpha must take const in config.h
 !*.font: Liberation Mono:pixelsize=12:antialias=true:autohint=true;
-*.alpha: 0.99
+!*.alpha: 0.97
 
-! Using wal for colors for now
-!! special
-!*.foreground:   #919191
-!*.background:   #000000
-!*.cursorColor:  #919191
-!
-!! black
-!*.color0:       #5e5e5e
-!*.color8:       #303030
-!
-!! red
-!*.color1:       #ffa59a
-!*.color9:       #a13a38
-!
-!! green
-!*.color2:       #24dfc4
-!*.color10:      #00715d
-!
-!! yellow
-!*.color3:       #73db95
-!*.color11:      #006f32
-!
-!! blue
-!*.color4:       #ff9fc9
-!*.color12:      #a43261
-!
-!! magenta
-!*.color5:       #ffa7f6
-!*.color13:      #913e88
-!
-!! cyan
-!*.color6:       #00ddf4
-!*.color14:      #007086
-!
-!! white
-!*.color7:       #ffffff
-!*.color15:      #c6c6c6
+! NOT Using wal for colors for now
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+
+! black
+*.color0:       #222827
+*.color8:       #5d6f74
+
+! red
+*.color1:       #d5a8e3
+*.color9:       #cd749c
+
+! green
+*.color2:       #9c75dd
+*.color10:      #63b0b0
+
+! yellow
+*.color3:       #9898ae
+*.color11:      #c0c0dd
+
+! blue
+*.color4:       #654a96
+*.color12:      #5786bc
+
+! magenta
+*.color5:       #625566
+*.color13:      #3f3442
+
+! cyan
+*.color6:       #a9d1df
+*.color14:      #849da2
+
+! white
+*.color7:       #e6ebe5
+*.color15:      #d9d6cf
+

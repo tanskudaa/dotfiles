@@ -175,7 +175,7 @@ hide_edge_borders both
 # Controlling gaps
 # Toggle between 10px borders with Mod+Backspace
 bindsym $mod+BackSpace \
-    exec i3-msg gaps outer current toggle 10, \
+    exec i3-msg gaps outer current set 0, \
     exec i3-msg gaps inner current toggle 10
 # Keep adding horizontal gaps with Shift+Backspace
 bindsym $mod+Shift+BackSpace \

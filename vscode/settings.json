@@ -11,9 +11,7 @@
     "editor.acceptSuggestionOnEnter": "off",
 
     "window.zoomLevel": 0,
-    "window.titleBarStyle": "custom",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": true,
 
     "workbench.colorCustomizations":
     {
@@ -44,4 +42,5 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.minimap.enabled": false,
     "python.languageServer": "Microsoft",
+    "window.titleBarStyle": "custom",
 }

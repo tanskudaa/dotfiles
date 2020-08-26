@@ -10,11 +10,19 @@ export EDITOR="vim"
 export VISUAL=$EDITOR
 
 # Add ~/bin to PATH
-export PATH=$PATH:/home/tansku/bin
+export PATH="$PATH:$HOME/bin:$HOME/npm/bin"
+export NODE_PATH="$NODE_PATH:$HOME/npm/lib/node_modules"
 
 # Aliases
 alias ls='ls --color=auto'
 alias feh='feh --scale-down --auto-zoom'
+
+alias pac='sudo pacman'
+alias pacs='sudo pacman -S'
+alias pacsuy='sudo pacman -Suy'
+alias pacss='pacman -Ss'
+
+alias gcc-ansi='gcc -ansi -pedantic-errors -Wall'
 
 # Prompt
 # What the fuck is happening here:

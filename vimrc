@@ -85,6 +85,7 @@ set nostartofline
  
 " Display the cursor position on the last line of the screen or in the status line of a window
 set ruler
+set colorcolumn=80,120
  
 " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -122,8 +123,9 @@ set pastetoggle=<F11>
 "
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
+" softtabstop for erasing tabs on backspace, tabstop for erasing spaces
 set softtabstop=4
+set shiftwidth=4
 set expandtab
  
 " Indentation settings for using hard tabs for indent. Display tabs as
@@ -135,8 +137,9 @@ set expandtab
 "------------------------------------------------------------
 " Useful mappings
 "
+" Example
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy, which is the default
-"map Y y$
+" map Y y$
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
@@ -188,6 +191,19 @@ if 1
   augroup END
 
 endif
+
+
+
+" Full 24-bit colors
+"------------------------------------------------------------
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" set termguicolors
+
+" Use terminal colors
+"------------------------------------------------------------
+set t_Co=16
+colorscheme elflord
 
 "------------------------------------------------------------
 " File specific configuration

@@ -3,9 +3,11 @@
 # dmenu prompt for shutting down and other power management options
 # Thanks Luke
 
-choices="Cancel\n\nLog out\nReboot\nShutdown"
+# choices="Cancel\n\nLog out\nReboot\nShutdown"
+choices="Log out\nReboot\nShutdown"
 
-chosen=$(echo -e "$choices" | dmenu -c -i -nb darkred -sb red -sf white -nf gray)
+# chosen=$(echo -e "$choices" | dmenu -c -i -nb darkred -sb red -sf white -nf gray)
+chosen=$(echo -e "$choices" | dmenu -i -c -nb black -sb red -sf white -nf gray)
 
 case "$chosen" in
     "Log out") i3 exit ;;

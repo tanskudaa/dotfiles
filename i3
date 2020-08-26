@@ -40,7 +40,7 @@ exec blueman-applet
 exec setxkbmap fi
 
 # Set sensible fucking mouse acceleration
-exec xinput set-prop pointer:'Logitech MX Master' 300 -0.6
+exec xinput set-prop pointer:'Logitech MX Master' 'libinput Accel Speed' -0.7
 
 # Set wallpaper from symlinked file
 # Good background colors:
@@ -52,7 +52,7 @@ exec_always feh --bg-center --no-fehbg $HOME/.wallpaper
 
 #------------------Application shortcuts
 # Power options (shutdown, reboot, log out)
-bindsym $mod+Escape exec dmenu_poweropt
+bindsym $mod+Escape exec $HOME/bin/dmenu_poweropt
 
 # Switch keymaps between fi and us (general use and programming, essentially)
 bindsym $mod+u exec setxkbmap fi
@@ -74,13 +74,11 @@ bindsym XF86AudioPrev exec playerctl previous
 # Start a terminal window, in a floating window by adding shift
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec st
-bindsym $mod+Shift+Return exec st -n floating -A 0.05
+bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
-bindsym $mod+d exec dmenu_run
-#bindsym $mod+d exec /home/tansku/bin/dmenu_run_history
-#bindsym $mod+d exec dmenu_run_history -nb "$black" -nf "$fg" -sb "$bg2" -sf "$fg"
-
+# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec $HOME/bin/dmenu_run_history -nb "$black" -nf "$front_pri" -sb "$back_pri" -sf "$front_pri"
 
 # Web browser
 #bindsym $mod+g exec surf google.com
@@ -90,7 +88,8 @@ bindsym $mod+g exec brave
 bindsym $mod+Shift+g exec brave --incognito
 
 # File browser
-bindsym $mod+n exec nemo
+# bindsym $mod+n exec nemo
+bindsym $mod+n exec thunar
 
 #------------------Special window instances
 # Use xprop to fetch window classes etc.
@@ -125,19 +124,19 @@ for_window [class="Lutris"] floating enable
 # Default and recommended:
 #font pango:monospace 10
 #font pango:DejaVu Sans Mono 8
-font pango:Noto Sans Display 8
+font pango:Noto Sans Display 10
 
 # Set colors from Xresources
 set_from_resource   $front_pri      i3wm.foreground #f0f0f0
 set_from_resource   $back_pri       i3wm.color9     #f0f0f0
 set_from_resource   $front_sec      i3wm.foreground #f0f0f0
 set_from_resource   $back_sec       i3wm.color5     #f0f0f0
-set_from_resource   $black          i3wm.color0     #000000
+set_from_resource   $black          i3wm.background #000000
 
 # class                     border      backgr.     text        indicator   child_border
-client.focused              $front_pri  $back_pri   $front_pri  $back_pri  $front_pri
-client.unfocused            $front_sec  $back_sec   $front_sec  $back_sec   $back_sec
-client.focused_inactive     $front_pri  $back_pri   $front_pri  $back_pri   $back_pri
+client.focused              $back_pri   $back_pri   $front_pri  $back_pri   $back_pri
+client.unfocused            $back_sec   $back_sec   $front_sec  $back_sec   $back_sec
+client.focused_inactive     $back_pri   $back_pri   $front_pri  $back_pri   $back_sec
 # client.urgent
 # client.placeholder
 # client.background           $bg
@@ -152,8 +151,10 @@ bar {
         tray_output none
 
         colors {
+            # class             border      background  text
             focused_workspace   $front_pri  $back_pri   $front_pri
-            inactive_workspace  $front_sec  $back_sec   $front_pri
+            active_workspace    $front_sec  $back_sec   $front_pri
+            inactive_workspace  $back_sec   $back_sec   $front_pri
         }
 
         # NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely!
@@ -166,23 +167,25 @@ bar {
 }
 
 # Border width
-default_border pixel 1
-default_floating_border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
 # Hide edge borders
 hide_edge_borders both
 
 # Controlling gaps
-# Keep adding horizontal gaps with backspace
-bindsym $mod+BackSpace exec i3-msg gaps inner current set 10, \
-    exec i3-msg gaps horizontal current plus 25.6, \
-    exec i3-msg gaps vertical current plus 14.4
+# Toggle between 10px borders with Mod+Backspace
+bindsym $mod+BackSpace \
+    exec i3-msg gaps outer current toggle 10, \
+    exec i3-msg gaps inner current toggle 10
+# Keep adding horizontal gaps with Shift+Backspace
+bindsym $mod+Shift+BackSpace \
+    exec i3-msg gaps inner current set 10, \
+    exec i3-msg gaps horizontal current plus 256
+# Keep adding vertical gaps with Control+Backspace
+bindsym $mod+Ctrl+BackSpace \
+    exec i3-msg gaps inner current set 10, \
+    exec i3-msg gaps vertical current plus 144
 
-# Keep adding vertical gaps with shift+backspace
-bindsym $mod+Shift+BackSpace exec i3-msg gaps horizontal current plus 204.8
-
-# Undo all gaps with ctrl+backspace
-bindsym $mod+Ctrl+BackSpace exec i3-msg gaps outer current set 0, \
-    exec i3-msg gaps inner current set 0
 
 # also i am mad so this is important
 bindsym $mod+Ctrl+Return open
@@ -191,15 +194,15 @@ bindsym $mod+Ctrl+Return open
 #------------------Defining workspaces
 # Define names for default workspaces for which we configure keybindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8 too many"
-set $ws9 "9 far too many"
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 too many "
+set $ws9 " 9 far too many "
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -295,4 +298,5 @@ mode "resize" {
 }
 # Bind resize-mode to key
 bindsym $mod+r mode "resize"
+# Mod+T for 1080p
 bindsym $mod+t resize set width 1920 height 1080

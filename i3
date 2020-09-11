@@ -11,27 +11,17 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 #------------------Execute on startup
-# Colors by wal
-# Also done by .xinitrc to counter errors stemming from xorg.conf.d - both are needed
-# exec wal -n -R
+# Set HDMI left of DisplayPort
+exec xrandr --output HDMI-0 --left-of DP-0 --auto
 
 # Merge .Xresources
 exec_always xrdb -merge ~/.Xresources
 
 # Disable screen timeout (use Alt+Shift+Q for screen sleep manually)
-exec xset s off dpms 0 0 0
-
-# Do Cinnamon magic to make graphical applications fucking work
-# OBS! This breaks i3 now that xorg.conf is read
-#exec /usr/lib/cinnamon-settings-daemon/csd-xrandr
-
-# Workaround script for Force Composition Pipeline
-# Not used anymore, xorg.conf works now that i's moved to xorg.conf.d
-#exec startup_nvidia
+# exec xset s off dpms 0 0 0
 
 # Compositing
 exec picom
-# exec_always pkill xcompmgr; xcompmgr
 
 # Blueman
 exec blueman-applet
@@ -40,7 +30,7 @@ exec blueman-applet
 exec setxkbmap fi
 
 # Set sensible fucking mouse acceleration
-exec xinput set-prop pointer:'Logitech MX Master' 'libinput Accel Speed' -0.7
+exec_always xinput set-prop pointer:'Logitech MX Master' 'libinput Accel Speed' -0.7
 
 # Set wallpaper from symlinked file
 # Good background colors:
@@ -62,6 +52,10 @@ bindsym $mod+Shift+u exec setxkbmap us
 # Will fuck up without the --release option
 bindsym --release $mod+Shift+q exec xset dpms force standby
 
+# Screenshot selectable area
+# doesn't work and don't know why
+# bindsym $mod+Shift+s exec scrot -s -d 0.5
+
 # Media keys
 # Set the default sink in pavucontrol
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -78,12 +72,11 @@ bindsym $mod+Shift+Return exec st -n floating
 
 # Start dmenu with history (~/bin/)
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec $HOME/bin/dmenu_run_history -nb "$black" -nf "$front_pri" -sb "$back_pri" -sf "$front_pri"
+bindsym $mod+d exec $HOME/bin/dmenu_run_history -nb "$black" -nf "$front_pri" -sb "$back_pri" -sf "$black"
 
 # Web browser
-#bindsym $mod+g exec surf google.com
-#bindsym $mod+g exec firefox
-#bindsym $mod+Shift+g exec firefox --private
+# bindsym $mod+g exec firefox
+# bindsym $mod+Shift+g exec firefox --private
 bindsym $mod+g exec brave
 bindsym $mod+Shift+g exec brave --incognito
 
@@ -99,7 +92,6 @@ for_window [class="Blueman-manager"] floating enable
 
 # st instances set to floating
 for_window [class="St" instance="floating"] floating enable, resize set 800 480, move position center, move down 460 px
-for_window [class="Gnome-terminal" title="floating"] floating enable, resize set 800 480, move position center, move down 460 px
 
 # All Steam pop-up windows but NOT the main Steam window
 for_window [class="Steam"] floating enable
@@ -109,12 +101,15 @@ for_window [title="Steam"] floating disable
 for_window [class="Nvidia-settings"] floating enable, resize set height 640, move position center
 
 # Nemo
-for_window [class="Nemo"] floating enable, resize set 1200 800
+for_window [class="Nemo"] floating enable, resize set 1200 800, move position center
+# Thunar
+for_window [class="Thunar"] floating enable, resize set 1200 800, move position center
 
 # pavucontrol
 for_window [class="Pavucontrol"] floating enable
 
 # Lutris
+# ???
 for_window [class="Lutris"] floating enable
 
 #------------------Visual
@@ -129,12 +124,12 @@ font pango:Noto Sans Display 10
 # Set colors from Xresources
 set_from_resource   $front_pri      i3wm.foreground #f0f0f0
 set_from_resource   $back_pri       i3wm.color9     #f0f0f0
-set_from_resource   $front_sec      i3wm.foreground #f0f0f0
+set_from_resource   $front_sec      i3wm.color13    #f0f0f0
 set_from_resource   $back_sec       i3wm.color5     #f0f0f0
 set_from_resource   $black          i3wm.background #000000
 
 # class                     border      backgr.     text        indicator   child_border
-client.focused              $back_pri   $back_pri   $front_pri  $back_pri   $back_pri
+client.focused              $back_pri   $back_pri   $black      $back_pri   $back_pri
 client.unfocused            $back_sec   $back_sec   $front_sec  $back_sec   $back_sec
 client.focused_inactive     $back_pri   $back_pri   $front_pri  $back_pri   $back_sec
 # client.urgent
@@ -152,9 +147,9 @@ bar {
 
         colors {
             # class             border      background  text
-            focused_workspace   $front_pri  $back_pri   $front_pri
-            active_workspace    $front_sec  $back_sec   $front_pri
-            inactive_workspace  $back_sec   $back_sec   $front_pri
+            focused_workspace   $front_pri  $back_pri   $black
+            active_workspace    $front_sec  $back_sec   $front_sec
+            inactive_workspace  $back_sec   $back_sec   $front_sec
         }
 
         # NOTE: bumblebee-status themes with icons need Font Awesome version 4 precisely!

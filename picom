@@ -4,7 +4,6 @@
 # requires: https://github.com/sdhand/compton
 corner-radius = 5.0;
 rounded-corners-exclude = [
-
   #"window_type = 'normal'",
   "class_g = 'awesome'",
   "class_g = 'URxvt'",
@@ -178,7 +177,7 @@ active-opacity = 1.0;
 
 # Dim inactive windows. (0.0 - 1.0, defaults to 0.0)
 # inactive-dim = 0.0
-inactive-dim = 0.05;
+inactive-dim = 0.10;
 
 # Specify a list of conditions of windows that should always be considered focused.
 # focus-exclude = []

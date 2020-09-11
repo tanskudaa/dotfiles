@@ -6,8 +6,11 @@ DIR=$(cd `dirname $0` && pwd)
 # Link dotfiles
 ln -sf $DIR/bashrc $HOME/.bashrc
 ln -sf $DIR/bash_profile $HOME/.bash_profile
+ln -sf $DIR/bash_profile $HOME/.profile
 ln -sf $DIR/Xresources $HOME/.Xresources
+ln -sf $DIR/fontconfig $HOME/.config/fontconfig/fonts.conf
 ln -sf $DIR/inputrc $HOME/.inputrc
+ln -sf $DIR/npmrc $HOME/.npmrc
 
 ln -sf $DIR/bin -T $HOME/bin
 

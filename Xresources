@@ -12,7 +12,7 @@ Xft.dpi:        100
 
 ! NOT Using wal for colors for now
 ! special
-*.foreground:   #919191
+*.foreground:   #d3d3d3
 *.background:   #000000
 *.cursorColor:  #919191
 
@@ -37,7 +37,7 @@ Xft.dpi:        100
 *.color12:      #d5b8ff
 
 ! magenta
-*.color5:       #913e88
+*.color5:       #7c2873
 *.color13:      #ffa7f6
 
 ! cyan

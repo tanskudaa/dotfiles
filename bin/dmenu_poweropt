@@ -4,12 +4,13 @@
 # Thanks Luke
 
 # choices="Cancel\n\nLog out\nReboot\nShutdown"
-choices="Log out\nReboot\nShutdown"
+choices="Lock\nLog out\nReboot\nShutdown"
 
 # chosen=$(echo -e "$choices" | dmenu -c -i -nb darkred -sb red -sf white -nf gray)
-chosen=$(echo -e "$choices" | dmenu -i -c -nb black -sb red -sf white -nf gray)
+chosen=$(echo -e "$choices" | dmenu -i -c -nb black -sb red -sf black -nf white)
 
 case "$chosen" in
+    Lock) $HOME/bin/i3lock-blur ;;
     "Log out") i3 exit ;;
     Reboot) reboot ;;
     Shutdown) shutdown -h now ;;

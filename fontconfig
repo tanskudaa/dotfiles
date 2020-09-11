@@ -17,7 +17,7 @@
   </alias>
   <alias>
     <family>monospace</family>
-    <prefer><family>Inconsolata</family></prefer>
+    <prefer><family>Ubuntu Mono</family></prefer>
   </alias>	
 
 </fontconfig>

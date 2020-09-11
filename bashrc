@@ -3,15 +3,18 @@
 #
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 # Use Vim as editor everywhere
 export EDITOR="vim"
 export VISUAL=$EDITOR
 
+# npm
+export NPM_PACKAGES="$HOME/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
 # Add ~/bin to PATH
-export PATH="$PATH:$HOME/bin:$HOME/npm/bin"
-export NODE_PATH="$NODE_PATH:$HOME/npm/lib/node_modules"
+export PATH="$PATH:$HOME/bin:$NPM_PACKAGES/bin"
 
 # Aliases
 alias ls='ls --color=auto'

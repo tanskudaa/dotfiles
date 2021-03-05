@@ -28,7 +28,7 @@ alias pacss='pacman -Ss'
 alias gcc-ansi='gcc -ansi -pedantic-errors -Wall'
 
 # Prompt
-# What the fuck is happening here:
+# What in the ---- is happening here:
 # \e to start color, m to end
 # eg. \e[1;31m for bold (1) red (31) text
 # \e[m to return to foreground color

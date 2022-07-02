@@ -5,7 +5,17 @@
 # TODO Same file for Linux and macOS - can os/kernel be queried for?
 
 # If not running interactively, don't do anything
-# [[ $- != *i* ]] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 function git_branch() {
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
@@ -69,6 +79,9 @@ export PATH="$PATH:$HOME/bin"
 # Aliases
 alias ls='ls --color=auto -F'
 alias ll='ls -al'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias feh='feh --scale-down --auto-zoom'
 alias gcc-ansi='gcc -ansi -pedantic-errors -Wall'
 alias docker-purge='docker kill $(docker ps -q) && docker rm $(docker ps -aq)'

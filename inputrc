@@ -1,1 +1,35 @@
+# Be 8 bit clean.
+set input-meta on
+set output-meta on
+
+# Vi everywhere
 set editing-mode vi
+$if mode=vi
+    set keymap vi-command
+    "\C-l" clear-screen
+    
+    set keymap vi-insert
+     "\C-l" clear-screen 
+$endif
+
+# Don't output everything on 1 line
+set horizontal-scroll-mode Off
+
+# Disable audible bell
+set bell-style none
+
+# Allow the use of the Home/End keys
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+# Allow the use of the Delete/Insert keys
+"\e[3~": delete-char
+"\e[2~": quoted-insert
+
+# Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word

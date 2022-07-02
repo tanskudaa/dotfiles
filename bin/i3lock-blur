@@ -1,0 +1,14 @@
+#!/bin/sh
+
+IMAGE=/tmp/i3lock.png
+SCREENSHOT="scrot $IMAGE"
+
+BLURTYPE="0x1"
+
+$SCREENSHOT
+convert $IMAGE -scale "5%" -blur $BLURTYPE -resize "2000%"  $IMAGE
+
+# -e ignore empty password
+# -i image
+i3lock -e -u -i $IMAGE
+rm $IMAGE

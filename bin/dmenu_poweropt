@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# dmenu prompt for shutting down and other power management options
+# Thanks Luke
+
+# choices="Cancel\n\nLog out\nReboot\nShutdown"
+choices="Lock\nLog out\nReboot\nShutdown"
+
+# chosen=$(echo -e "$choices" | dmenu -c -i -nb darkred -sb red -sf white -nf gray)
+chosen=$(echo "$choices" | dmenu -i -nb black -sb red -sf black -nf white)
+
+case "$chosen" in
+    "Lock") $HOME/bin/i3lock-blur ;;
+    "Log out") i3 exit ;;
+    "Reboot") reboot ;;
+    "Shutdown") shutdown -h now ;;
+esac

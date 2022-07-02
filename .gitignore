@@ -1,0 +1,10 @@
+# Vim generated
+*.un
+*.un~
+*~
+
+# Vim machine specific
+/vim/.netrwhist
+
+# Mac system
+.DS_Store

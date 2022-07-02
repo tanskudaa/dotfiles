@@ -1,0 +1,79 @@
+#
+# ~/.bashrc
+#
+
+# TODO Same file for Linux and macOS - can os/kernel be queried for?
+
+# If not running interactively, don't do anything
+# [[ $- != *i* ]] && return
+
+function git_branch() {
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ ! "${BRANCH}" == "" ]
+    then
+        STAT=`parse_git_dirty`
+        echo "[${BRANCH}${STAT}] "
+    else
+        echo " "
+    fi
+}
+
+function parse_git_dirty() {
+    status=`git status 2>&1 | tee`
+    dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+    untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+    ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+    newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+    renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+    deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+
+    if [ "${dirty}" == "0" ]; then
+        bits="!${bits}"
+    fi
+    if [ "${untracked}" == "0" ]; then
+        bits="?${bits}"
+    fi
+    if [ "${ahead}" == "0" ]; then
+        bits="*${bits}"
+    fi
+    if [ "${newfile}" == "0" ]; then
+        bits="+${bits}"
+    fi
+    if [ "${renamed}" == "0" ]; then
+        bits=">${bits}"
+    fi
+    if [ "${deleted}" == "0" ]; then
+        bits="-${bits}"
+    fi
+
+    if [ ! "${bits}" == "" ]; then
+        echo " ${bits}"
+    else
+        echo ""
+    fi
+}
+
+# Use Vim as editor everywhere
+export EDITOR="vim"
+export VISUAL=$EDITOR
+
+# Prompt
+export RED=$(echo -en '\e[1;31m')
+export CYAN=$(echo -en '\e[1;36m')
+export FG=$(echo -en '\e[m')
+export PS1='\n[${RED}\u${FG}@${CYAN}\h${FG} $(pwd)]\n$(git_branch)$ '
+
+# Add ~/bin to PATH
+export PATH="$PATH:$HOME/bin"
+
+# Aliases
+alias ls='ls --color=auto -F'
+alias ll='ls -al'
+alias feh='feh --scale-down --auto-zoom'
+alias gcc-ansi='gcc -ansi -pedantic-errors -Wall'
+alias docker-purge='docker kill $(docker ps -q) && docker rm $(docker ps -aq)'
+alias docker-image-purge='docker image rm $(docker image ls -aq)'
+
+# Set mouse speed
+# Currently done in i3 config
+# xinput set-prop pointer:'Logitech MX Master' 296 -0.8
